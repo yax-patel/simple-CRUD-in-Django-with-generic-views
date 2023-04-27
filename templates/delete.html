@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+
+{% block data %}
+<form method="POST">
+    <table>
+        <tr>
+            <td>name</td>
+            <td>{{object.name}}</td>
+        </tr>
+        <tr>
+            <td>image</td>
+            <td><img src="/media/{{object.img}}" alt="{{object.name}}" width = "400" heigth = "400"></td>
+        </tr>
+    </table>
+    {% csrf_token %}<input type="submit" value="DELETE">
+ </form>
+ {% endblock data %}

@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+
+{% block data %}
+    Total No of Data = {{data | length}}
+    <br/>
+    <br/>
+    {% if data.count > 0 %}
+        <table border="1">
+            <tr>
+                <td>Name</td>
+                <td>image</td>
+                <td>details</td>
+                <td>update</td>
+                <td>Delete</td>
+            </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td><img src="/media/{{x.img}}" alt="{{x.img}}" height="50" width="50"/></td>
+            <td><a href="{% url 'imgform:getDetails' x.id%}">Click Here</a></td>
+            <td><a href="{% url 'imgform:updateData' x.id%}">update</a></td>
+            <td><a href="{% url 'imgform:deleteData' x.id%}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+            <h4>No Data Found</h4>
+    {% endif %}
+{% endblock data %}
